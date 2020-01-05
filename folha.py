@@ -13,6 +13,7 @@ def folha(palavra, data_inicial, data_final):
         for k in range(3):
             try:
                 driver.get(r'https://acervo.folha.com.br/busca-avancada.do')
+                driver.find_element_by_xpath('//*[@id="advanced-search-form"]/div[1]/div/div[1]/input').clear()
                 driver.find_element_by_xpath('//*[@id="advanced-search-form"]/div[1]/div/div[1]/input').send_keys(palavra)
                 #Data'
                 driver.find_element_by_xpath('//*[@id="advanced-search-form"]/div[2]/div[1]/div[2]').click()
@@ -41,7 +42,7 @@ def folha(palavra, data_inicial, data_final):
         
         for tries in range(3):
             try:
-                x = (driver.find_element_by_xpath('/html/body/main/div[1]/section/div[1]/span').text)
+                x = driver.find_element_by_xpath('/html/body/main/div[1]/section/div[1]/span').text
                 continue
             except Exception:
                 continue
@@ -51,5 +52,5 @@ def folha(palavra, data_inicial, data_final):
         except ValueError:
             x = int(0)
         df.update({i : x})
-        s = pd.Series(df)
-        return s
+    s = pd.Series(df)
+    return s
