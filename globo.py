@@ -23,8 +23,10 @@ def globo(data_inicial, data_final):
                 x = driver.find_element_by_xpath('/html/body/div[{}]/div[1]/div[1]'.format(j)).text
             except Exception:
                 pass
-            
-            x = x.split('\n')[0]
+            try:
+                x = x.split('\n')[0]
+            except AttributeError:
+                pass
             try:
                 x = int(x)
                 break
