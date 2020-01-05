@@ -12,7 +12,7 @@ def correio(palavra, data_inicial, data_final):
     for i in datas:
         data_inicial = '01/' + i.strftime('%m') + '/' + i.strftime('%Y')
         data_final = i.strftime('%d') + '/' + i.strftime('%m') + '/' + i.strftime('%Y')
-        
+
         for k in range(2):
             try:
                 driver.find_element_by_xpath('//*[@id="txt-search-simple"]').clear()
@@ -47,8 +47,9 @@ def correio(palavra, data_inicial, data_final):
                 break
             except Exception:
                 continue
-        
+        x = None
         for j in range(3):
+            time.sleep(4)
             x = driver.find_element_by_xpath('//*[@id="search-h1"]').text
             print(x)
             if x == '453.218 resultados':
@@ -61,6 +62,8 @@ def correio(palavra, data_inicial, data_final):
             x = int(x)
         except ValueError:
             x = int(0)
+        except TypeError:
+            x = None
         df.update({i : x})
     s = pd.Series(df)
     return s.resample('M').last()
