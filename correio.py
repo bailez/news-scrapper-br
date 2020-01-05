@@ -6,8 +6,9 @@ def correio(palavra, data_inicial, data_final):
     datas = pd.date_range(data_inicial,data_final,freq='M')    
     df = {}
     driver = webdriver.Chrome()
-    driver.get(r'https://www.correiobraziliense.com.br/busca/')
     driver.maximize_window()
+    driver.get(r'https://www.correiobraziliense.com.br/busca/')
+    
     for i in datas:
         data_inicial = '01/' + i.strftime('%m') + '/' + i.strftime('%Y')
         data_final = i.strftime('%d') + '/' + i.strftime('%m') + '/' + i.strftime('%Y')

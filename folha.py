@@ -4,6 +4,7 @@ import pandas as pd
 def folha(palavra, data_inicial, data_final):
     datas = pd.date_range(data_inicial,data_final,freq='d')
     driver = webdriver.Chrome()
+    driver.maximize_window()
     df = {}
     for i in datas:        
         day = i.strftime('%d')
