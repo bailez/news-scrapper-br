@@ -16,7 +16,6 @@ def globo(data_inicial, data_final):
         da=2010&anoSelecionado={}&mesSelecionado={}&matutino=on&economia=on&pais=on&ri\
         o=on&opiniao=on&primeirapagina=on&segundapagina=on'.format(ano,mes)
         driver.get(link)
-        time.sleep(3)
         x = None
         for j in ['4','5']:
             try:
@@ -38,5 +37,7 @@ def globo(data_inicial, data_final):
             except TypeError:
                 break
         df.update({i : x})
+        time.sleep(5)
+        
     s = pd.Series(df)
     return s
