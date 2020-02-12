@@ -14,7 +14,7 @@ def estadao(palavra,data_inicial,data_final):
     x = 0
     datas = pd.date_range(data_inicial,data_final,freq='M')    
     df = {}
-    driver = webdriver.Chrome(r'C:\Users\filip\Downloads\chromedriver_win32\chromedriver')
+    driver = webdriver.Chrome()
     driver.maximize_window()
 
     for i in datas:
